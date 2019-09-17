@@ -61,6 +61,8 @@ dlldata.c
 *.svclog
 *.scc
 
+.vs/
+
 # Chutzpah Test files
 _Chutzpah*
 
@@ -192,7 +194,3 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 source/packages/
-/.vs/DotNetBay/v15/Server/sqlite3/storage.ide-wal
-/.vs/DotNetBay/v15/Server/sqlite3/storage.ide-shm
-/.vs/DotNetBay/v15/Server/sqlite3/storage.ide
-/.vs/DotNetBay/v15/Server/sqlite3/db.lock
