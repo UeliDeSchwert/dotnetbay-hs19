@@ -9,7 +9,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <DataGrid x:Name="AuctionsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Auctions}" IsReadOnly="True" HorizontalAlignment="Left" Height="364" Margin="10,46,0,0" VerticalAlignment="Top" Width="774" RenderTransformOrigin="-0.246,0.042">
-            <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"></DataGridTextColumn>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"></DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="NewAuction" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" Height="31"/>
     </Grid>
