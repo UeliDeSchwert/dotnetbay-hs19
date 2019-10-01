@@ -11,8 +11,19 @@
         <DataGrid x:Name="AuctionsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Auctions}" IsReadOnly="True" HorizontalAlignment="Left" Height="364" Margin="10,46,0,0" VerticalAlignment="Top" Width="774" RenderTransformOrigin="-0.246,0.042">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=IsClosed}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Start Price" Binding="{Binding Path=StartPrice}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Current Price" Binding="{Binding Path=CurrentPrice}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Bids" Binding="{Binding Path=Bids}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Starts" Binding="{Binding Path=StartDateTimeUtc}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ends" Binding="{Binding Path=EndDateTimeUtc}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Seller" Binding="{Binding Path=Seller}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Current Winner"></DataGridTextColumn>
+                <DataGridTextColumn Header="Closed" Binding="{Binding Path=CloseDateTimeUtc}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Winner" Binding="{Binding Path=Winner}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Placed Bid"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="NewAuction" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" Height="31"/>
+        <Button x:Name="NewAuction" Content="New Auction" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="92" Height="31" Click="NewAuction_Click"/>
     </Grid>
 </Window>

@@ -65,5 +65,17 @@ namespace DotNetBay.WPF
                 });
             }
         }
+
+        private void NewAuction_Click(object sender, RoutedEventArgs e)
+        {
+            var sellView = new SellView();
+            sellView.ShowDialog();
+        }
+
+        private void Buy_Click(object sender, RoutedEventArgs e)
+        {
+            var bidView = new BidView();
+            bidView.ShowDialog();
+        }
     }
 }
