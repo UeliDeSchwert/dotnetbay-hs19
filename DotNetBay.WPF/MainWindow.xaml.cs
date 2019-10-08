@@ -46,6 +46,8 @@ namespace DotNetBay.WPF
 
             this.auctionService = new AuctionService(this.MainRepository, new SimpleMemberService(this.MainRepository));
             this.Auctions = new ObservableCollection<Auction>(this.auctionService.GetAll());
+
+            
         }
 
         void AddRandomData()
@@ -74,7 +76,8 @@ namespace DotNetBay.WPF
 
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
-            var bidView = new BidView();
+            Auction a = (Auction) ((Button)sender).DataContext;
+            var bidView = new BidView(a, auctionService);
             bidView.ShowDialog();
         }
     }

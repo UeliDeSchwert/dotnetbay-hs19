@@ -4,9 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotNetBay.WPF"
+        xmlns:entity="clr-namespace:DotNetBay.Data.Entity;assembly=DotNetBay.Data.Entity"
         mc:Ignorable="d"
-        Title="BidView" Height="450" Width="800">
+        Title="BidView" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=entity:Auction}"
+        >
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Place your bid" FontSize="25" FontWeight="Bold" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <Label Content="Title" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
+        <TextBlock Text="{Binding Title}" FontSize="20" Grid.Row="1" Grid.Column="1"></TextBlock>
+
+        <Image Source="{Binding Image}" Grid.Row="2" Grid.Column="1"></Image>
+
+        <Label Content="Description" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
+        <TextBlock Text="{Binding Description}" FontSize="20" Grid.Row="3" Grid.Column="1"></TextBlock>
+
+        <Label Content="Start Price" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></Label>
+        <TextBlock Text="{Binding StartPrice}" FontSize="20" Grid.Row="4" Grid.Column="1"></TextBlock>
+
+        <Label Content="Current Price" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></Label>
+        <TextBlock Text="{Binding CurrentPrice}" FontSize="20" Grid.Row="5" Grid.Column="1"></TextBlock>
+
+        <Label Content="Your Bid" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></Label>
+        <TextBox x:Name="tbAmount" FontSize="20" Grid.Row="6" Grid.Column="1" Text="{Binding CurrentPrice, Mode=OneTime}"></TextBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Margin="10">
+            <Button Content="Place Bid" Padding="10" IsDefault="True" Click="PlaceBid"/>
+            <TextBlock Width="10"></TextBlock>
+            <Button Content="Cancel" Padding="10" IsCancel="True" Click="Cancel" />
+        </StackPanel>
     </Grid>
 </Window>
