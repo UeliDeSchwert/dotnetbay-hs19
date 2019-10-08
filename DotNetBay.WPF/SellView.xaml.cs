@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DotNetBay.Data.Entity;
 
 namespace DotNetBay.WPF
 {
@@ -22,6 +23,18 @@ namespace DotNetBay.WPF
         public SellView()
         {
             InitializeComponent();
+        }
+
+        private void SaveNewAuction(object sender, RoutedEventArgs e)
+        {
+            //todo: validate inputs
+            Auction a = new Auction();
+            
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

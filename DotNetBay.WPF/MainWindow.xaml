@@ -4,18 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DotNetBay.WPF"
+        xmlns:entity="clr-namespace:DotNetBay.Data.Entity;assembly=DotNetBay.Data.Entity"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:MainWindow}"
-        Title="MainWindow" Height="605.687" Width="1187.085">
+        Title="MainWindow" Height="637.678" Width="1245.734">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="BuyButton">
+            <TextBlock Text="Bid" Background="Green" TextAlignment="Center" ></TextBlock>
+        </ControlTemplate>
+
+        <local:BooleanToStatusTextConverter x:Key="StatusValueConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="339*"/>
             <ColumnDefinition Width="58*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="AuctionsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Auctions}" IsReadOnly="True" HorizontalAlignment="Left" Height="520" Margin="10,46,0,0" VerticalAlignment="Top" Width="1161" RenderTransformOrigin="-0.246,0.042" Grid.ColumnSpan="2">
+        <DataGrid x:Name="AuctionsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Auctions}" IsReadOnly="True" HorizontalAlignment="Left" Height="552" Margin="10,46,0,0" VerticalAlignment="Top" Width="1219" RenderTransformOrigin="-0.246,0.042" Grid.ColumnSpan="2">
             <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Auction">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate DataType="entity:Auction">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold" ></TextBlock>
+                                <Image Source="{Binding Image}" MaxHeight="100" MaxWidth="120"></Image>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Status" Binding="{Binding Path=IsClosed}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=IsClosed, Converter={StaticResource StatusValueConverter}}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Start Price" Binding="{Binding Path=StartPrice}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Current Price" Binding="{Binding Path=CurrentPrice}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Bids" Binding="{Binding Path=Bids}"></DataGridTextColumn>
@@ -28,7 +47,12 @@
                 <DataGridTemplateColumn Header="Placed Bid">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnBuy" Click="Buy_Click"></Button>
+                            <Button Name="btnBuy" 
+                                    Click="Buy_Click" 
+                                    Template="{StaticResource BuyButton}"
+                                    Visibility="{Binding IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                    d:DataContext="{d:DesignInstance entity:Auction}">
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

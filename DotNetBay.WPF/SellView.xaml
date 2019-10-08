@@ -36,7 +36,7 @@
         <DatePicker Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Margin="0,5,200,5" VerticalAlignment="Stretch"/>
         <DatePicker Grid.Column="1" Grid.Row="5" HorizontalAlignment="Stretch" Margin="0,5,200,5" VerticalAlignment="Stretch"/>
         <TextBox Grid.Column="1" Grid.Row ="6" HorizontalAlignment="Stretch" Margin="0,5,10,5" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Stretch"/>
-        <Button Content="Cancel" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Margin="481.333,5,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Add Auction" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Margin="401.333,6,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancel" IsCancel="True" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Margin="481.333,5,0,0" VerticalAlignment="Top" Width="75" Click="Cancel"/>
+        <Button Content="Add Auction" IsDefault="True" Grid.Column="1" Grid.Row="8" HorizontalAlignment="Left" Margin="401.333,6,0,0" VerticalAlignment="Top" Width="75" Click="SaveNewAuction"/>
         </Grid>
 </Window>

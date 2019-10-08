@@ -44,6 +44,7 @@ namespace DotNetBay.WPF
                 }
                 Bid b = auctionService.PlaceBid(auction, amount);
 
+                
                 if (b.Accepted.HasValue && b.Accepted.Value)
                 {
                     MessageBox.Show($"Placed bid {b.Amount}");
@@ -55,7 +56,7 @@ namespace DotNetBay.WPF
                 
                 Close();
             }
-            catch (FormatException ex)
+            catch (FormatException)
             {
                 tbAmount.BorderBrush = Brushes.Red;
                 MessageBox.Show("Please provide a valid number");

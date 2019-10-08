@@ -40,7 +40,7 @@ namespace DotNetBay.WPF
             this.AuctionRunner = new AuctionRunner(this.MainRepository);
             this.AuctionRunner.Start();
 
-            //AddRandomData();
+            AddRandomData();
 
             DataContext = this;
 
@@ -65,6 +65,15 @@ namespace DotNetBay.WPF
                     StartPrice = 72,
                     Seller = me
                 });
+
+                service.Save(new Auction
+                {
+                    Title = "My First Auction",
+                    StartDateTimeUtc = DateTime.UtcNow.AddSeconds(10),
+                    EndDateTimeUtc = DateTime.UtcNow.AddSeconds(20),
+                    StartPrice = 72,
+                    Seller = me
+                });
             }
         }
 
@@ -79,6 +88,28 @@ namespace DotNetBay.WPF
             Auction a = (Auction) ((Button)sender).DataContext;
             var bidView = new BidView(a, auctionService);
             bidView.ShowDialog();
+        }
+    }
+
+    public class BooleanToStatusTextConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value is bool b)
+            {
+                return b ? "Abgeschlossen" : "Offen";
+            }
+
+            return "NO BOOL";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value is string k)
+            {
+                if ("Abgeschlossen".Equals(k)) return true;
+            }
+            return false;
         }
     }
 }
