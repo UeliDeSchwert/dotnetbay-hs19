@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTime2Convention.cs" />
+    <Compile Include="EFMainRepository.cs" />
     <Compile Include="MainDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

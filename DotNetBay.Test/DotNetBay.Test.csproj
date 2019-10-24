@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DotNetBay.Test</RootNamespace>
     <AssemblyName>DotNetBay.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -74,6 +74,8 @@
     <Compile Include="Core\AuctioneerTests.cs" />
     <Compile Include="Core\MemberServiceTest.cs" />
     <Compile Include="Core\MockedMemberService.cs" />
+    <Compile Include="Storage\EFMainRepositoryFactory.cs" />
+    <Compile Include="Storage\EFMainRepositoryTests.cs" />
     <Compile Include="Storage\FileSystemMainRepositoryTests.cs" />
     <Compile Include="Storage\TempDirectory.cs" />
     <Compile Include="Storage\TempFile.cs" />
@@ -84,6 +86,10 @@
     <ProjectReference Include="..\DotNetBay.BusinessLogic\DotNetBay.BusinessLogic.csproj">
       <Project>{9EF46B21-B552-4CC6-A4C0-E81091A4064B}</Project>
       <Name>DotNetBay.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBay.Data.EF\DotNetBay.Data.EF.csproj">
+      <Project>{4ae8317a-2feb-40c5-a972-db28aecc2cd0}</Project>
+      <Name>DotNetBay.Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\DotNetBay.Data.Provider.FileStorage\DotNetBay.Data.Provider.FileStorage.csproj">
       <Project>{92942123-C7EC-4418-9B48-F5D62BE7E7A3}</Project>

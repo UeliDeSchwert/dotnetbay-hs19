@@ -8,7 +8,7 @@ using DotNetBay.Data.Entity;
 
 namespace DotNetBay.Data.EF
 {
-    class MainDbContext : System.Data.Entity.DbContext
+    public class MainDbContext : System.Data.Entity.DbContext
     {
         public MainDbContext() : base("DatabaseConnection") { }
 
@@ -21,7 +21,7 @@ namespace DotNetBay.Data.EF
             modelBuilder.Entity<Auction>().HasRequired(t => t.Seller).WithMany(k => k.Auctions);
             modelBuilder.Entity<Auction>().HasOptional(t => t.Winner);
             modelBuilder.Entity<Auction>().HasOptional(t => t.ActiveBid).WithRequired(k => k.Auction);
-            modelBuilder.Entity<Auction>().HasMany(t => t.Bids).WithRequired(k => k.Auction);
+            modelBuilder.Entity<Auction>().HasMany(t => t.Bids);
         }
 
         public virtual DbSet<Auction> Auctions { get; set; }
