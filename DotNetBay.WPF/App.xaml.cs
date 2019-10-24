@@ -19,6 +19,8 @@ namespace DotNetBay.WPF
 
         public App()
         {
+            var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+
             this.MainRepository = new FileSystemMainRepository("appdata.json");
             this.MainRepository.SaveChanges();
 

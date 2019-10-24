@@ -16,6 +16,7 @@ namespace DotNetBay.Test.Storage
         [TestCase]
         public void GivenAnEmptyRepo_AddOneAuction_NotEmptyAnymore()
         {
+            var ensureDLLIsCopied = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
             var createdAuction = CreateAnAuction();
             createdAuction.Seller = CreateAMember();
 
